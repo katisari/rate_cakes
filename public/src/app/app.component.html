@@ -1,0 +1,39 @@
+<h1>Rate My Cakes</h1>
+<div id="left_block">
+  <form (submit)="onSubmit()" id="new_cake_form">
+    <h4>Submit a cake to be rated</h4>
+    <div class="form-group">
+      Baker name: 
+      <input type="text" class="form-control" name="newCake.name" [(ngModel)]="newCake.name">
+    </div>
+    <div class="form-group">
+      Image url: 
+      <input type="text" name="newCake.url" class="form-control" [(ngModel)]="newCake.url"><br>
+    </div>
+    <button type="submit" class="btn btn-primary">SUBMIT</button>
+  </form>
+</div>
+
+<div id="right_block">
+  <div *ngFor="let cake of cakes">
+    <button (click)="viewDetail(cake._id)"><img [src]="cake.image" alt="cake_img"></button>
+    <form id="comment_form" (submit)="addComment(cake._id)">
+      <div class="form-group">
+        <input type="number" class="form-control" name="newComment[cake._id]['content']" [(ngModel)]="newComment[cake._id]['rating']"/>
+        <!-- <select class="form-control" name="newComment[cake._id]['rate']" ([ngModel])="newComment[cake._id]['rate']">
+          <option value="1">1 star</option>
+          <option value="2">2 stars</option>
+          <option value="3">3 stars</option>
+          <option value="4">4 stars</option>
+          <option value="5">5 stars</option>
+        </select> -->
+        {{newComment[cake._id]| json }}
+      </div>
+      <div class="form-group" *ngIf="cake">
+        <input type="text" class="form-control" name="newComment[cake._id]['content']" [(ngModel)]="newComment[cake._id]['content']"/>
+      </div>
+      <button type="submit" class="btn btn-primary">Rate!</button>
+    </form>
+</div>
+</div>
+<app-add-detail *ngIf="clickedDetail" [cakeToShow]="singleDetail"></app-add-detail>

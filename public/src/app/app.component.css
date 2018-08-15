@@ -1,0 +1,33 @@
+#new_cake_form{
+    border: 1px solid black;
+
+}
+
+form {
+    padding: 20px;
+}
+
+#left_block {
+    vertical-align: top;
+    padding: 20px;
+    width: 30%;
+    display:inline-block;
+}
+
+#right_block{
+    vertical-align: top;
+    padding: 20px;
+    width: 60%;
+    display: inline-block;
+    overflow-y: scroll;
+    height: 400px;
+}
+    #right_block img {
+        width: 300px;
+        height: 200px;
+        display:inline-block;
+    }
+    #right_block form {
+        width: 50%;
+        display:inline-block;
+    }
